@@ -1,1 +1,2 @@
 # django-lotto
+# django-lotto
