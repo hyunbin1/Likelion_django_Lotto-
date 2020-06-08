@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>탕진잼 로또</title>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container col-md-6 text-center">
+    <br>
+    <h1 style="color:#f0ad4e;">탕진잼 로또</h1>
+    <div class="card">
+      <div class="card-body">
+        <div>
+          <p>당신이 입력한 값은</p>
+          {% for number in number_list %}
+          <strong>{{ number }}</strong>
+          {% endfor %}
+        </div>
+        <br>
+        <div>
+          <p>추첨한 값</p>
+          {% for random in random_list %}
+          <strong>{{ random }}</strong>
+          {% endfor %}
+        </div>
+        <br>
+        <div>
+          <p>맞은 개수</p>
+          <strong>{{ count }}개, </strong>
+          {% if count == 6 %}
+          <strong>1등</strong>
+          {% elif count == 5 %}
+          <strong>2등</strong>
+          {% elif count == 4 %}
+          <strong>3등</strong>
+          {% elif count == 3 %}
+          <strong>4등</strong>
+          {% elif count == 2 %}
+          <strong>5등</strong>
+          {% elif count < 2 %} <strong>꽝</strong>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <p class="text-center"><a href="{%url 'home'%}">다시 하기</a></p>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>탕진잼 로또</title>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- CSS Style(Non Static) -->
+  <style>
+    form{
+      display: inline-flex;
+    }
+    @media ( max-width: 375px ) {
+      p{
+        font-size: 15px;
+      }
+    }
+    @media ( max-width: 320px ) {
+      p{
+        font-size: 12px;
+      }
+    }
+  </style>
+  <script>
+    // JS Auto Tab
+    function moveFocus(maxlength, text, auto_tab) {
+      var str = text.value.length;
+      if (str == maxlength) {
+        auto_tab.focus();
+      }
+    }
+    // JS Valid Check
+    function validCheck() {
+      if (form.number1.value == ''||form.number2.value==''||form.number3.value==''
+        ||form.number4.value==''||form.number5.value==''||form.number6.value=='') {
+        alert('모두 입력하세요.');
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="container col-md-6 text-center">
+    <br>
+    <h1 style="color:#f0ad4e;">탕진잼 로또</h1>
+    <p>지금까지 이런 로또는 없었다, 이것은 탕진인가 텅장인가</p>
+    <div class="card">
+      <div class="card-body">
+        <form name="form" action="{% url 'result' %}">
+          {% csrf_token %}
+          <input type="number" min=1 max=45 name="number1" onKeyUp="javascript:moveFocus(2,this,form.number2);" class="form-control input-align">
+          <input type="number" min=1 max=45 name="number2" onKeyUp="javascript:moveFocus(2,this,form.number3);" class="form-control input-align">
+          <input type="number" min=1 max=45 name="number3" onKeyUp="javascript:moveFocus(2,this,form.number4);" class="form-control input-align">
+          <input type="number" min=1 max=45 name="number4" onKeyUp="javascript:moveFocus(2,this,form.number5);" class="form-control input-align">
+          <input type="number" min=1 max=45 name="number5" onKeyUp="javascript:moveFocus(2,this,form.number6);" class="form-control input-align">
+          <input type="number" min=1 max=45 name="number6" maxlength="2" class="form-control input-align">
+          <input type="submit" class="btn btn-outline-warning" value="구매 하기" onclick="validCheck()">
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
